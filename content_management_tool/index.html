@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Creation Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: rgb(106, 211, 134);
+            
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        textarea, input[type="text"], input[type="url"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        img, video {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Create Your Blog</h1>
+        <form>
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required>
+            
+            <label for="content">Content:</label>
+            <textarea id="content" name="content" rows="10" required></textarea>
+            
+            <label for="image">Image URL:</label>
+            <input type="url" id="image" name="image">
+            
+            <label for="video">Video URL:</label>
+            <input type="url" id="video" name="video">
+            
+            <button type="submit">Publish</button>
+        </form>
+        
+        <div class="preview">
+            <h2>Preview</h2>
+            <h3 id="previewTitle"></h3>
+            <div id="previewContent"></div>
+            <img id="previewImage" src="" alt="Image Preview">
+            <video id="previewVideo" controls>
+                <source src="" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+    
+    <script>
+        const titleInput = document.getElementById('title');
+        const contentInput = document.getElementById('content');
+        const imageInput = document.getElementById('image');
+        const videoInput = document.getElementById('video');
+        
+        const previewTitle = document.getElementById('previewTitle');
+        const previewContent = document.getElementById('previewContent');
+        const previewImage = document.getElementById('previewImage');
+        const previewVideo = document.getElementById('previewVideo');
+        
+        titleInput.addEventListener('input', () => {
+            previewTitle.textContent = titleInput.value;
+        });
+        
+        contentInput.addEventListener('input', () => {
+            previewContent.innerHTML = contentInput.value;
+        });
+        
+        imageInput.addEventListener('input', () => {
+            previewImage.src = imageInput.value;
+        });
+        
+        videoInput.addEventListener('input', () => {
+            previewVideo.src = videoInput.value;
+        });
+    </script>
+</body>
+</html>
